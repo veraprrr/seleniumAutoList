@@ -45,7 +45,7 @@ class MainPageTest {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         wait.until(ExpectedConditions.and(
-                ExpectedConditions.attributeContains(By.cssSelector("h2 > a[href]"), "href", "selenium"),
+                ExpectedConditions.attributeContains(By.cssSelector("h2 > a[href]"), "href", "selenium.dev"),
                 ExpectedConditions.elementToBeClickable(By.cssSelector("h2 > a[href]"))
         ));
         List<WebElement> results = driver.findElements(By.cssSelector("h2 > a[href]"));
