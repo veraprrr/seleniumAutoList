@@ -58,6 +58,6 @@ class MainPageTest {
     public void clickElement(List<WebElement> results, int num) {
         results.get(num).click();
         int searchNumber = num + 1;
-        System.out.println("Кликнули по " + searchNumber + " элементу");
+        //System.out.println("Кликнули по " + searchNumber + " элементу");
     }
 }
