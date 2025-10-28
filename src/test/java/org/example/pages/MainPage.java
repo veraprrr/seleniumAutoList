@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-// https://www.bing.com
 public class MainPage {
 
     @FindBy(css = "#text")

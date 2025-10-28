@@ -23,7 +23,6 @@ class YaSearchTest {
     @BeforeEach
     void setup() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -47,12 +46,10 @@ class YaSearchTest {
 
         banner();
 
-        List<WebElement> results = driver.findElements(By.cssSelector("a > h2"));
-
         ResultsPage rp = new ResultsPage(driver);
         rp.clickElement(0);
-        ArrayList tabs = new ArrayList<> (driver.getWindowHandles());
-        if (tabs.size() > 1) driver.switchTo().window(tabs.get(1).toString());
+
+        getCurrentUrl();
 
         assertEquals(searchUrl, driver.getCurrentUrl(), "Не открылась первая вкладка");
 
@@ -70,6 +67,12 @@ class YaSearchTest {
         ResultsPage rp = new ResultsPage(driver);
 
         assertEquals(input, rp.getTextFromSearchField(), "Текст не совпал");
+    }
+
+    public String getCurrentUrl() {
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(tabs.size() - 1));
+        return driver.getCurrentUrl();
     }
 
     public void banner (){
